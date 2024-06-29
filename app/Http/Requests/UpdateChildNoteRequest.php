@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreChildrenRequest extends FormRequest
+class UpdateChildNoteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class StoreChildrenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "note" => ["required", "string", "max:1000", "min:5"]
         ];
     }
 }

@@ -21,13 +21,14 @@ class ChildNoteController extends Controller
 
     public function store(StoreChildNoteRequest $request)
     {
-        dd($request);
 
         $child = new ChildNote();
-        $child->child_id = $request->get("");
+        $child->child_id = $request->get("child_id");
         $child->note = $request->get("note");
+        $child->save();
 
-        return to_route("children.index");
+        return to_route("children.show", $request->get("child_id"))
+            ->with("create-success-message", "Note added successfully!");
     }
 
     public function show(ChildNote $childNote)

@@ -6,16 +6,23 @@ use App\Models\Child;
 use App\Http\Requests\StoreChildRequest;
 use App\Http\Requests\UpdateChildRequest;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class ChildController extends Controller
 {
-    public function index()
+
+    public function index(Request $request)
     {
-        $children = Child::paginate(9);
-        return view("children.index")->with("children", $children);
+        $categoryYear = $request->query('category');
+
+        // Fetch children filtered by birth year
+        $children = Child::whereYear('birth_date', $categoryYear)->get();
+
+        return view('children.index', compact('children'));
     }
+
 
     public function create()
     {
@@ -37,7 +44,7 @@ class ChildController extends Controller
         $child->child_cin = Str::upper(Str::random(5)."-".Str::random(5));
         $child->save();
 
-        return to_route("children.index")
+        return to_route("child-categories")
             ->with("create-success-message", "Child Added Successfully!");
     }
 

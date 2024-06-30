@@ -7,14 +7,13 @@
 
         <div>
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" placeholder="Enter Your Email..." />
+                autofocus autocomplete="username" placeholder="{{ __('Enter Your Email...') }}" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <div class="mt-4">
             <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="current-password" placeholder="Enter Your Password..." />
-
+                autocomplete="current-password" placeholder="{{ __('Enter Your Password...') }}" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -37,7 +36,7 @@
             @endif
 
             <x-primary-button class="ms-3">
-                {{ __('Log in') }}
+                <span class="fas fa-sign-in-alt mr-2"></span>{{ __('Log in') }}
             </x-primary-button>
         </div>
     </form>

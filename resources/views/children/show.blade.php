@@ -58,15 +58,26 @@
                             <div class="w-full mt-6">
                                 <form action="{{ route('childNotes.store') }}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="child_id" value="{{ $child->id }}">
                                     <label for="notes"
                                         class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Ajouter une note à cet enfant') }}:</label>
-                                    <textarea id="notes" name="notes" rows="4" placeholder="Ajouter une note à cet enfant ..."
-                                        class="w-full p-2 text-gray-800 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-white"></textarea>
+                                    <div class="relative">
+                                        <textarea id="notes" name="note" rows="4" value="" placeholder="Ajouter une note à cet enfant ..."
+                                            class="w-full p-2 text-gray-800 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-white @error('note') border-red-500 @enderror">{{ old('note') }}</textarea>
+                                        @error('note')
+                                            <span
+                                                class="absolute inset-y-0 right-0 flex items-center pr-3 text-red-500 pointer-events-none">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </span>
+                                            <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                     <button type="submit"
                                         class="px-4 py-2 mt-4 text-white transition bg-green-600 rounded-md shadow-md hover:bg-green-700 focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                                         <i class="mr-2 fas fa-plus"></i> {{ __('Soumettre') }}
                                     </button>
                                 </form>
+
                             </div>
                         </div>
                     </div>

@@ -24,7 +24,7 @@ class UpdateChildRequest extends FormRequest
         return [
             "first_name" => ["required", "string", "min:3", "max:50"],
             "last_name" => ["required", "string", "min:3", "max:50"],
-            "birth_date" => ["nullable", "date"],
+            "birth_date" => ["required", "date"],
             "parent_phone" => ["nullable", "string", "regex:/^(?:\+212|0)[67]\d{8}$/"],
             "image" => ["nullable", "image", "max:2048"]
         ];

@@ -28,12 +28,12 @@
                                     {{ $child->child_cin }}</p>
                             </div>
                             <div class="flex items-center mb-6 space-x-4">
-                                <a href="{{ route('children.edit', $child) }}"
+                                <a href="{{ route('child-categories.children.edit', $child) }}"
                                     class="flex items-center px-4 py-2 text-white transition bg-blue-600 rounded-md shadow-md hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                     <i class="mr-2 fas fa-pen-square"></i>
                                     <span>{{ __('Modifier') }}</span>
                                 </a>
-                                <form action="{{ route('children.destroy', $child) }}" method="POST"
+                                <form action="{{ route('child-categories.children.destroy', $child) }}" method="POST"
                                     onsubmit="return confirm('{{ __('Êtes-vous sûr de vouloir supprimer cet enfant ?') }}');">
                                     @csrf
                                     @method('DELETE')
@@ -43,6 +43,11 @@
                                         <span>{{ __('Supprimer') }}</span>
                                     </button>
                                 </form>
+                                <a href="{{ route('child-categories.childCard.pdf', $child->id) }}"
+                                    class="px-4 py-2 text-blue-600 transition bg-blue-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-blue-200">
+                                    {{ __('Download PDF') }}
+                                </a>
+
                             </div>
                             <hr class="w-full mb-6 border-gray-300 dark:border-gray-600">
                             @if ($child->parent_phone)

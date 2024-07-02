@@ -44,4 +44,7 @@ class Child extends Model
         return $this->hasMany(ChildNote::class);
     }
 
+    protected $casts = [
+        'birth_date' => 'date:m/d/Y',
+    ];
 }

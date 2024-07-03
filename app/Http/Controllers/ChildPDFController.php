@@ -23,17 +23,17 @@ class ChildPDFController extends Controller
         return $pdf->download($child->full_name . "'s card.pdf");
     }
 
-    //   public function generateChildrenListPDF(int $id)
-    // {
-    //     $child = Child::findOrFail($id);
-    //     set_time_limit(300);
+      public function generateChildrenListPDF(int $year)
+    {
+        $child = Child::findOrFail($year);
+        set_time_limit(300);
 
-    //     $pdf = PDF::loadView('childPDF.childCard', compact('child'))->setOptions([
-    //         'defaultFont' => 'sans-serif',
-    //         'isHtml5ParserEnabled' => true,
-    //         'isRemoteEnabled' => true,
-    //     ]);
+        $pdf = PDF::loadView('childPDF.childCard', compact('child'))->setOptions([
+            'defaultFont' => 'sans-serif',
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => true,
+        ]);
 
-    //     return $pdf->download($child->full_name . "'s card.pdf");
-    // }
+        return $pdf->download($child->full_name . "'s card.pdf");
+    }
 }

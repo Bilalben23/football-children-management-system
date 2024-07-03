@@ -5,6 +5,7 @@ use App\Http\Controllers\ChildController;
 use App\Http\Controllers\ChildNoteController;
 use App\Http\Controllers\ChildPDF;
 use App\Http\Controllers\ChildPDFController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,9 +14,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)
+    ->middleware(['auth', 'verified'])->name('dashboard');
 
 // Authenticated user routes
 Route::middleware('auth')->group(function () {

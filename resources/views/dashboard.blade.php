@@ -1,4 +1,4 @@
-<x-app-layout title="Dashboard">
+<x-app-layout title="Tableau de bord">
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
@@ -27,7 +27,7 @@
                     </div>
 
                     <!-- Children by Year -->
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+                    <div class="bg-white dark:bg-gray-800 p-1 md:p-6 rounded-lg shadow-md mb-8">
                         <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
                             {{ __("Catégories d'enfants") }}
                         </h3>
@@ -83,7 +83,7 @@
                             <!-- Recent Registration -->
                             <li class="flex items-start py-4">
                                 <span
-                                    class="rounded-full bg-blue-500 dark:bg-blue-600 text-white flex items-center justify-center h-10 w-10">
+                                    class="rounded-full bg-blue-500 dark:bg-blue-600 text-white flex items-center justify-center h-10 w-10 min-w-10">
                                     <i class="fas fa-user-plus"></i>
                                 </span>
                                 <div class="ml-4">
@@ -102,7 +102,7 @@
                             <!-- Recent Update -->
                             <li class="flex items-start py-4">
                                 <span
-                                    class="rounded-full bg-green-500 dark:bg-green-600 text-white flex items-center justify-center h-10 w-10">
+                                    class="rounded-full bg-green-500 dark:bg-green-600 text-white flex items-center justify-center h-10 w-10 min-w-10">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <div class="ml-4">

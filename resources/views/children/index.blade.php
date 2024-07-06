@@ -1,4 +1,4 @@
-<x-app-layout title="Children">
+<x-app-layout title="les enfants">
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
@@ -11,17 +11,15 @@
                         </span>
                     </h1>
 
-
                     <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
                         @forelse($children as $child)
                             <a href="{{ route('child-categories.children.show', $child->id) }}"
-                                class="flex items-center relative p-6 space-x-6 transition bg-[#1A2130] border-2 border-transparent rounded-lg shadow-lg hover:opacity-95 hover:border-[#E88D67] hover:shadow-2xl">
+                                class="relative flex items-center p-6 space-x-6 transition bg-[#1A2130] border-2 border-transparent rounded-lg shadow-lg hover:opacity-95 hover:border-[#E88D67] hover:shadow-2xl">
+                                {{-- Child image --}}
                                 <div
-                                    class="absolute px-1.5 py-1 text-sm font-semibold text-white bg- rounded-md shadow top-1 left-1 bg-gray-800">
-                                    <p class="m-0">{{ $categoryYear }}</p>
+                                    class="top-1 left-1 px-1 border-2 border-black absolute text-sm font-semibold bg-gray-800 rounded-md shadow-lg">
+                                    <p>{{ $categoryYear }}</p>
                                 </div>
-
-
                                 <div class="flex-shrink-0">
                                     @if ($child->image_url)
                                         <img src="{{ asset('storage/' . $child->image_url) }}"
@@ -33,6 +31,8 @@
                                             class="rounded-full w-[100px] h-[100px] shadow-lg border-2 border-gray-300 dark:border-gray-700">
                                     @endif
                                 </div>
+
+                                {{-- Child details --}}
                                 <div class="flex-grow">
                                     <p class="mb-2 text-xl font-bold text-[#E88D67]">{{ $child->full_name }}</p>
                                     <p class="flex items-center mb-1 text-sm text-gray-400">
@@ -53,24 +53,30 @@
                         @empty
                             <div class="flex flex-col items-center justify-center py-12 mx-auto col-span-full">
                                 <p class="mb-4 text-lg text-center text-gray-500">
-                                    {{ __('Aucun enfant à afficher pour le moment.') }}</p>
+                                    {{ __('Aucun enfant à afficher pour le moment.') }}
+                                </p>
                                 <a href="{{ route('child-categories.children.create') }}"
-                                    class="px-4 py-2 text-blue-600 transition bg-blue-100 rounded-md hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-blue-200">{{ __('Créer un nouvel enfant') }}</a>
+                                    class="px-4 py-2 text-blue-600 transition bg-blue-100 rounded-md hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-blue-200">
+                                    {{ __('Créer un nouvel enfant') }}
+                                </a>
                             </div>
                         @endforelse
                     </div>
+
+                    {{-- Create new child button --}}
                     <div class="flex items-center justify-center mt-6 col-span-full">
                         <a href="{{ route('child-categories.children.create') }}"
                             class="inline-block px-4 py-2 text-blue-600 transition bg-blue-100 rounded-md hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-blue-200">
                             {{ __('Créer un nouvel enfant') }}
                         </a>
                     </div>
+
+                    {{-- Pagination --}}
                     @if ($children->hasPages())
                         <div class="mt-8">
                             {{ $children->appends(['category' => request()->query('category')])->links() }}
                         </div>
                     @endif
-
                 </div>
             </div>
         </div>

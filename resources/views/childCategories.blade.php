@@ -1,4 +1,4 @@
-<x-app-layout title="Children">
+<x-app-layout title="catégories d'enfants">
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
